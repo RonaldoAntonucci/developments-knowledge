@@ -5,6 +5,7 @@ import 'express-async-errors';
 import cors from 'cors';
 
 import routes from './routes';
+import '../database';
 
 class App {
   constructor() {
