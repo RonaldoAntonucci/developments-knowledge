@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { username, password, host, port, database } from '../config/mongo';
 
 class Database {
   constructor() {
@@ -6,10 +7,13 @@ class Database {
   }
 
   init() {
-    mongoose.connect('mongodb://docker:docker@localhost:27017/Afiliart', {
-      useUnifiedTopology: true,
-      useNewUrlParser: true,
-    });
+    mongoose.connect(
+      `mongodb://${username}:${password}@${host}:${port}/${database}?authSource=admin`,
+      {
+        useUnifiedTopology: true,
+        useNewUrlParser: true,
+      }
+    );
     this.connection = mongoose.connection;
     this.connection.on(
       'error',
