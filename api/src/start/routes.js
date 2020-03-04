@@ -1,7 +1,9 @@
 import { Router } from 'express';
 
+import DeveloperController from '../controllers/DevelopersController';
+
 const routes = new Router();
 
-routes.get('/', (req, res) => res.json({ message: 'hellow' }));
+routes.post('/developers', DeveloperController.store);
 
 export default routes;

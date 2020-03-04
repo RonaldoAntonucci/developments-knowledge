@@ -19,9 +19,9 @@ class Database {
       'error',
       console.error.bind(console, 'connection error:')
     );
-    this.connection.once('open', () => {
-      console.log('connected');
-    });
+    // this.connection.once('open', () => {
+    //   console.log('connected');
+    // });
   }
 }
 
