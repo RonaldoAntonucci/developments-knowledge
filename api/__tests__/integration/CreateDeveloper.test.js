@@ -1,8 +1,12 @@
 import request from 'supertest';
 import app from '../../src/start/app';
-import { factory } from '../utils';
+import { factory, truncate } from '../utils';
 
 describe('Create Developers', () => {
+  afterEach(async () => {
+    await truncate();
+  });
+
   it('Should be able to create Developer', async done => {
     const developerAttrs = await factory.attrs('Developer');
     const { status, body } = await request(app)
@@ -18,4 +22,6 @@ describe('Create Developers', () => {
     expect(body).toHaveProperty('state', developerAttrs.state);
     done();
   });
+
+  // it('Should be return error if hav');
 });

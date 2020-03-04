@@ -7,6 +7,7 @@ class Database {
   }
 
   init() {
+    mongoose.set('debug', true);
     mongoose.connect(
       `mongodb://${username}:${password}@${host}:${port}/${database}?authSource=admin`,
       {
