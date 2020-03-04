@@ -9,12 +9,22 @@ import pagination from '../../util/pagination';
 export default {
   async index({ query }, res) {
     const { page, limit } = pagination(query);
+    const { shift, orderBy, desc, name } = query;
+
+    const filter = {};
+    const order = {};
+
+    if (shift) filter.shift = shift;
+
+    if (orderBy) order[orderBy] = desc ? -1 : 1;
+    if (name) filter.name = new RegExp(name, 'i');
 
     const [developers, total] = await Promise.all([
-      await Developer.find()
+      await Developer.find(filter)
         .skip((page - 1) * limit)
-        .limit(Number(limit)),
-      Developer.countDocuments(),
+        .limit(Number(limit))
+        .sort(order),
+      Developer.countDocuments(filter),
     ]);
 
     return res.json({

@@ -21,9 +21,10 @@
     "camelcase": "off",
     "no-unused-vars": ["error", { "argsIgnorePattern": "next" }],
     "arrow-parens": "off",
-    "object-curly-newline":"off",
-    "comma-dangle":"off",
-    "implicit-arrow-linebreak":"off",
-    "operator-linebreak": "off"
+    "object-curly-newline": "off",
+    "comma-dangle": "off",
+    "implicit-arrow-linebreak": "off",
+    "operator-linebreak": "off",
+    "function-paren-newline": "off"
   }
 }
