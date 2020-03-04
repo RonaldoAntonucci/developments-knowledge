@@ -1,11 +1,11 @@
 import { factory, MongooseAdapter } from 'factory-girl';
 import faker from './faker';
 
-import Developer from '../../src/schemas/Developer';
+import Developer from '../../src/app/schemas/Developer';
 
-import { shiftValues } from '../../src/schemas/types/Shift';
-import { skillValues } from '../../src/schemas/types/Skill';
-import { skillsNames } from '../../src/schemas/types/Skills';
+import { shiftValues } from '../../src/app/schemas/types/Shift';
+import { skillValues } from '../../src/app/schemas/types/Skill';
+import { skillsNames } from '../../src/app/schemas/types/Skills';
 
 const adapter = new MongooseAdapter();
 

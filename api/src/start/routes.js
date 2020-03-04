@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import DeveloperController from '../controllers/DevelopersController';
+import DeveloperController from '../app/controllers/DevelopersController';
 
 const routes = new Router();
 

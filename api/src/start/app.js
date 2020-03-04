@@ -7,13 +7,15 @@ import cors from 'cors';
 import routes from './routes';
 import '../database';
 
+import ExceptionHandler from '../app/exceptions/Handler';
+
 class App {
   constructor() {
     this.server = express();
 
     this.middlewares();
     this.routes();
-    // this.exceptionHandler();
+    this.exceptionHandler();
   }
 
   middlewares() {
@@ -23,6 +25,10 @@ class App {
 
   routes() {
     this.server.use(routes);
+  }
+
+  exceptionHandler() {
+    this.server.use(ExceptionHandler);
   }
 }
 
