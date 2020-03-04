@@ -2,11 +2,11 @@ import CreateDeveloper from '../services/CreateDeveloperService';
 
 import Developer from '../schemas/Developer';
 
+import pagination from '../../util/pagination';
+
 export default {
   async index({ query }, res) {
-    let { page = 1, limit = 20 } = query;
-    page = page < 1 ? 1 : page;
-    limit = limit > 100 || limit < 1 ? 100 : limit;
+    const { page, limit } = pagination(query);
 
     const [developers, total] = await Promise.all([
       await Developer.find()
