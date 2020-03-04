@@ -23,5 +23,34 @@ describe('Create Developers', () => {
     done();
   });
 
-  // it('Should be return error if hav');
+  it('Should be return error if email exists', async () => {
+    const exists = await factory.create('Developer');
+    const developerAttrs = await factory.attrs('Developer', {
+      email: exists.email,
+    });
+
+    const {
+      status,
+      body: { message },
+    } = await request(app)
+      .post('/developers')
+      .send(developerAttrs);
+
+    expect(status).toBe(400);
+    expect(message).toBe('Email already exists.');
+  });
+
+  it('Should be return error if props is invalid', async () => {
+    const developerAttrs = {};
+
+    const {
+      status,
+      body: { error },
+    } = await request(app)
+      .post('/developers')
+      .send(developerAttrs);
+
+    expect(status).toBe(400);
+    expect(error).toBe('Validation fails');
+  });
 });

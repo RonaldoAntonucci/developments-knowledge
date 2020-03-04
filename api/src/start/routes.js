@@ -2,8 +2,10 @@ import { Router } from 'express';
 
 import DeveloperController from '../app/controllers/DevelopersController';
 
+import DeveloperStoreValidator from '../app/validators/DeveloperStoreValidator';
+
 const routes = new Router();
 
-routes.post('/developers', DeveloperController.store);
+routes.post('/developers', DeveloperStoreValidator, DeveloperController.store);
 
 export default routes;

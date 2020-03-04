@@ -1,18 +1,8 @@
-import Developer from '../schemas/Developer';
+import CreateDeveloper from '../services/CreateDeveloperService';
 
 export default {
   async store({ body }, res) {
-    const { name, email, phone, linkedin, city, state, shift, skills } = body;
-    const developer = await Developer.create({
-      name,
-      email,
-      phone,
-      linkedin,
-      city,
-      state,
-      shift,
-      skills,
-    });
+    const developer = await CreateDeveloper.run(body);
 
     return res.json(developer);
   },

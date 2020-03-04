@@ -7,7 +7,8 @@ class Database {
   }
 
   init() {
-    mongoose.set('debug', true);
+    // mongoose.set('debug', true);
+
     mongoose.connect(
       `mongodb://${username}:${password}@${host}:${port}/${database}?authSource=admin`,
       {
@@ -15,6 +16,7 @@ class Database {
         useNewUrlParser: true,
       }
     );
+    mongoose.set('useCreateIndex', true);
     this.connection = mongoose.connection;
     this.connection.on(
       'error',
