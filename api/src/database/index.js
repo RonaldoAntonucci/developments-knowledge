@@ -17,6 +17,7 @@ class Database {
       }
     );
     mongoose.set('useCreateIndex', true);
+    mongoose.set('useFindAndModify', false);
     this.connection = mongoose.connection;
     this.connection.on(
       'error',

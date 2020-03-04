@@ -1,4 +1,5 @@
 import CreateDeveloper from '../services/CreateDeveloperService';
+import UpdateDeveloper from '../services/UpdateDeveloperService';
 
 import Developer from '../schemas/Developer';
 import Exception from '../exceptions/ServiceException';
@@ -27,6 +28,12 @@ export default {
 
   async store({ body }, res) {
     const developer = await CreateDeveloper.run(body);
+
+    return res.json(developer);
+  },
+
+  async update({ body, params: { developerId } }, res) {
+    const developer = await UpdateDeveloper.run(developerId, body);
 
     return res.json(developer);
   },
