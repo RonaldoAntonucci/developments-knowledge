@@ -1,5 +1,5 @@
 {
-  "name": "developers-knowledge",
+  "name": "developers-knowledge-api",
   "version": "1.0.0",
   "description": "Aplicação de conhecimentos de programadores desenvolvida para o teste da Afiliart",
   "main": "index.js",
