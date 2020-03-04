@@ -72,4 +72,22 @@ describe('Developers Update', () => {
     expect(skills).toHaveProperty('nodejs', developer.skills.nodejs);
     expect(skills).toHaveProperty('database', developer.skills.database);
   });
+
+  it('Should be return error if email already in use.', async () => {
+    const developer = await factory.create('Developer');
+    const existDeveloper = await factory.create('Developer');
+
+    // eslint-disable-next-line no-underscore-dangle
+    const developerId = String(developer._id);
+
+    const {
+      status,
+      body: { message },
+    } = await request(app)
+      .put(`/developers/${developerId}`)
+      .send({ email: existDeveloper.email });
+
+    expect(status).toBe(400);
+    expect(message).toBe('Email already in use.');
+  });
 });

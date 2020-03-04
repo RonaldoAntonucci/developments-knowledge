@@ -4,7 +4,7 @@ import Exception from '../exceptions/ServiceException';
 
 export default {
   async isAvailableEmail(email) {
-    if (email && (await Developer.find({ email }))) {
+    if (await Developer.findOne({ email })) {
       return false;
     }
     return true;
@@ -16,7 +16,7 @@ export default {
       throw new Exception('Invalid Developer id.');
     }
 
-    if (!this.isAvailableEmail(email)) {
+    if (email && !(await this.isAvailableEmail(email))) {
       throw new Exception('Email already in use.');
     }
 

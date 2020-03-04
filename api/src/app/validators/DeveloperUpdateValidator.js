@@ -16,9 +16,7 @@ export default async (req, res, next) => {
       name: Yup.string().min(3),
       email: Yup.string().email(),
       phone: Yup.string(),
-      linkedin: Yup.string()
-        .url()
-        .required(),
+      linkedin: Yup.string().url(),
       city: Yup.string(),
       state: Yup.string(),
       shift: Yup.string().matches(/(morning|afternoon|night)/, {
